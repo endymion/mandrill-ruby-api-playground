@@ -11,6 +11,11 @@ module Mandrill
       Mandrill::API.new.ping
     end
 
+    desc "get-message-id", "Get information about a specific message ID."
+    def get_message_info(id)
+      Mandrill::API.new.get_message_info(id)
+    end
+
   end
 end
 
