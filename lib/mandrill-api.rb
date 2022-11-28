@@ -1,5 +1,6 @@
 require_relative 'ping'
 require_relative 'get-message-info'
+require_relative 'search-messages'
 
 module Mandrill
 
