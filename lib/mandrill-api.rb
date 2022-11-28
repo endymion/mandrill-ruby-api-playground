@@ -1,11 +1,12 @@
+require_relative 'ping'
+
 module Mandrill
 
   class API
 
-    def ping
+    def initialize
       begin
-        resp = @client.users.ping
-        puts "API ping: \"#{resp}\""
+        @client = MailchimpTransactional::Client.new(ENV['MANDRILL_API_KEY'])
       rescue MailchimpTransactional::ApiError => e
         puts "Error: #{e}"
       end
