@@ -1,0 +1,1 @@
+# mandrill-ruby-api-playground
