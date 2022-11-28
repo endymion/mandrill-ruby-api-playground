@@ -1,6 +1,8 @@
 require 'MailchimpTransactional'
 require 'dotenv/load'
-require "thor"
+require 'byebug'
+require 'awesome_print'
+require 'thor'
 require_relative 'lib/mandrill-api'
 
 module Mandrill
