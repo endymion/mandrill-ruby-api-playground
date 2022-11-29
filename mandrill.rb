@@ -19,8 +19,21 @@ module Mandrill
     end
 
     desc "search-messages", "Use the API's search feature."
-    def search_messages(query)
-      Mandrill::API.new.search_messages(query)
+    option :queryfile
+    def search_messages(query=nil)
+      queries =
+        if query
+          [query]
+        else
+          if options[:queryfile] =~ /\.json/
+            JSON.parse(File.read(options[:queryfile])).
+              map{|entry| entry['@message'] }
+          else
+            File.readlines(options[:queryfile])
+          end
+        end
+      queries.each{|query| query.gsub!(/^.*\: /,'').chomp! }
+      Mandrill::API.new.search_messages(queries)
     end
 
   end
